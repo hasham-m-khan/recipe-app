@@ -94,7 +94,6 @@ public class RecipeBootstrap implements CommandLineRunner {
             "\n" +
             "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws"
         );
-        guacNotes.setRecipe(guacRecipe);
         guacRecipe.setNotes(guacNotes);
 
         guacRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), uomMap.get("Each")));
@@ -146,7 +145,6 @@ public class RecipeBootstrap implements CommandLineRunner {
             "\n" +
             "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvu7Q0MJ"
         );
-        spicyNotes.setRecipe(spicyTaco);
         spicyTaco.setNotes(spicyNotes);
 
         spicyTaco.addIngredient(new Ingredient("Ancho Chilli Powder", new BigDecimal(2), uomMap.get("Tablespoon")));
