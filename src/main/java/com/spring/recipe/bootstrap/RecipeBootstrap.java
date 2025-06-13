@@ -4,13 +4,15 @@ import com.spring.recipe.domain.*;
 import com.spring.recipe.repositories.CategoryRepository;
 import com.spring.recipe.repositories.RecipeRepository;
 import com.spring.recipe.repositories.UnitOfMeasureRepository;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.*;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements CommandLineRunner {
 
@@ -25,8 +27,10 @@ public class RecipeBootstrap implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         rr.saveAll(getRecipes());
+        log.debug("============> Loading Bootstrap Data.");
     }
 
     private List<Recipe> getRecipes() {
