@@ -30,14 +30,14 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Set<Recipe> getRecipes() {
-        log.info("I'm in the recipe service!");
+        log.info("---------> Fetching recipes from database");
         Set<Recipe> recipes = new HashSet<>();
         rp.findAll().iterator().forEachRemaining(recipes::add);
         return recipes;
     }
 
     @Override
-    public Recipe findById(long id) {
+    public Recipe findById(Long id) {
         Optional<Recipe> recipe = rp.findById(id);
 
         if (!recipe.isPresent()) {
@@ -48,7 +48,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     @Transactional
-    public RecipeCommand findCommandById(long id) {
+    public RecipeCommand findCommandById(Long id) {
         return recipeToRecipeCommand.convert(findById(id));
     }
 
@@ -60,5 +60,10 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe savedRecipe = rp.save(detachedRecipe);
         log.debug("Saved Recipe Id: " + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        rp.deleteById(id);
     }
 }

@@ -30,7 +30,7 @@ public class RecipeBootstrap implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         rr.saveAll(getRecipes());
-        log.debug("============> Loading Bootstrap Data.");
+        log.debug("---------> Loading Bootstrap Data.");
     }
 
     private List<Recipe> getRecipes() {

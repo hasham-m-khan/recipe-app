@@ -1,6 +1,12 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --red-300: rgb(235, 134, 142);
+    --orange-300: rgb(255, 178, 115);
+    --blue-300: rgb(110, 168, 255);
+}
+
 .filter-green {
     filter: brightness(0) saturate(100%) invert(55%) sepia(55%) saturate(7303%) hue-rotate(119deg) brightness(98%) contrast(85%);
 }
@@ -25,4 +31,17 @@
 
 .raleway {
     font-family: "Raleway", sans-serif;
+}
+
+.btn.bg-danger-subtle:hover {
+    background: var(--red-300) !important;
+}
+
+.btn.bg-warning-subtle:hover {
+    background: var(--orange-300) !important;
+}
+
+.btn.bg-primary-subtle:hover {
+    background: var(--blue-300) !important;
+    color: white !important;
 }
