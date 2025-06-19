@@ -12,14 +12,14 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
 
     private final NotesToNotesCommand notesConverter;
     private final CategoryToCategoryCommand categoryConverter;
-    private final IngredientToIngredientCommand ingredientConverter;
+    private final IngredientToIngredientCommand typeToCommandConverter;
 
     public RecipeToRecipeCommand(
             NotesToNotesCommand notesConverter, CategoryToCategoryCommand categoryConverter,
-            IngredientToIngredientCommand ingredientConverter) {
+            IngredientToIngredientCommand typeToCommandConverter) {
         this.notesConverter = notesConverter;
         this.categoryConverter = categoryConverter;
-        this.ingredientConverter = ingredientConverter;
+        this.typeToCommandConverter = typeToCommandConverter;
     }
 
     @Synchronized
@@ -48,7 +48,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
 
         if(source.getIngredients() != null && !source.getIngredients().isEmpty()) {
             source.getIngredients().forEach(ingredient -> command.getIngredients().add(
-                ingredientConverter.convert(ingredient)
+                typeToCommandConverter.convert(ingredient)
             ));
         }
 

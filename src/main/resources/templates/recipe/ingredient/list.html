@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- CSS tags-->
+    <th:block th:insert="~{fragments/fragments :: cssTags}"/>
+
+    <title>List Ingredients</title>
+</head>
+<body>
+<div th:replace="fragments/fragments :: navbar"></div>
+<div class="container-fluid col-md-8 mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h2 class="card-title h5">Ingredients</h2>
+        </div>
+        <div class="card-body" th:if="${not #lists.isEmpty(recipe.ingredients)}">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="fw-bold raleway">
+                            <td>ID</td>
+                            <td>Description</td>
+                            <td>View</td>
+                            <td>Update</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr th:remove="all">
+                            <td>123</td>
+                            <td>Tasty Goodnees 1</td>
+                            <td><a href="#">View</a></td>
+                            <td><a href="#">Update</a></td>
+                            <td><a href="#">Delete</a></td>
+                        </tr>
+                        <tr th:remove="all">
+                            <td>12333</td>
+                            <td>Tasty Goodnees 2</td>
+                            <td><a href="#" class="btn btn-sm btn-primary text-dark-emphasis bg-primary-subtle me-2 border-0">View</a></td>
+                            <td><a href="#" class="btn btn-sm btn-warning text-dark-emphasis bg-warning-subtle me-2 border-0">Update</a></td>
+                            <td><a href="#" class="btn btn-sm btn-danger text-dark-emphasis bg-danger-subtle me-2 border-0">Delete</a></td>
+                        </tr>
+                        <tr th:each="ingredient : ${recipe.ingredients}">
+                            <td th:text="${ingredient.id}">334</td>
+                            <td th:text="${ingredient.amount} + ' ' + ${ingredient.uom.getDescription()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
+                            <td>
+                                <a href="#"
+                                   th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}"
+                                   class="btn btn-sm btn-primary text-dark-emphasis bg-primary-subtle me-2 border-0"
+                                >View</a>
+                            </td>
+                            <td>
+                                <a href="#"
+                                   th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}"
+                                   class="btn btn-sm btn-warning text-dark-emphasis bg-warning-subtle me-2 border-0"
+                                >Update</a>
+                            </td>
+                            <td>
+                                <a href="#"
+                                   th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}"
+                                   class="btn btn-sm btn-danger text-dark-emphasis bg-danger-subtle me-2 border-0"
+                                >Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:insert="~{fragments/fragments :: scriptsFooter}" />
+</body>
+</html>

@@ -5,6 +5,9 @@
     --red-300: rgb(235, 134, 142);
     --orange-300: rgb(255, 178, 115);
     --blue-300: rgb(110, 168, 255);
+    --bd-violet-bg: rgb(113, 45, 250);
+    --bd-violet-bg-hover: rgb(93, 25, 230);
+    --bd-violet-rgb: rgb(110, 44, 240);
 }
 
 .filter-green {
@@ -44,4 +47,8 @@
 .btn.bg-primary-subtle:hover {
     background: var(--blue-300) !important;
     color: white !important;
+}
+
+.view-ingredients {
+    height: 2rem;
 }

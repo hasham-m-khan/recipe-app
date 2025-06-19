@@ -57,7 +57,10 @@
                 </div>
             </div>
             <section class="mb-5">
-                <h2 class="h3 border-bottom pb-2 mb-3">Ingredients</h2>
+                <div class="d-flex justify-content-between border-bottom pb-2 mb-3">
+                    <h2 class="h3">Ingredients</h2>
+                    <a th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" class="btn btn-primary btn-sm view-ingredients">View</a>
+                </div>
                 <table>
                     <tr th:each="ingredient : ${recipe.ingredients}">
                         <td class="pe-5">
@@ -81,8 +84,6 @@
         </div>
     </div>
 
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<th:block th:insert="~{fragments/fragments :: scriptsFooter}" />
 </body>
 </html>

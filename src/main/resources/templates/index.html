@@ -48,7 +48,7 @@
                                         <!--/*@thymesVar id="recipe" type="com.spring.recipe.domain.Recipe"*/-->
                                         <td th:text="${recipe.id}"></td>
                                         <td th:text="${recipe.description}"></td>
-                                        <td class="d-flex justify-content-end">
+                                        <td class="d-flex justify-content-around">
                                             <a href="#"
                                                class="btn btn-sm btn-primary text-dark-emphasis bg-primary-subtle me-2 border-0"
                                                th:href="@{'/recipe/' + ${recipe.id} + '/show'}">view</a>
@@ -72,8 +72,6 @@
         </div>
     </div>
 
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<th:block th:insert="~{fragments/fragments :: scriptsFooter}" />
 </body>
 </html>
