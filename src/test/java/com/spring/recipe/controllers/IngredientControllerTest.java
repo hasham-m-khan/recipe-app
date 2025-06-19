@@ -92,4 +92,45 @@ public class IngredientControllerTest {
                 .andExpect(model().attributeExists("ingredient"))
                 .andExpect(model().attributeExists("uomList"));
     }
+
+    @Test
+    public void testNewIngredientForm() throws Exception {
+        //when
+        RecipeCommand command = new RecipeCommand();
+        command.setId(1L);
+
+        //given
+        when(recipeService.findCommandById(anyLong())).thenReturn(command);
+        when(unitOfMeasureService.listAllUoms()).thenReturn(new HashSet<>());
+
+        //then
+        mockMvc.perform(get("/recipe/1/ingredient/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("recipe/ingredient/ingredientform"))
+                .andExpect(model().attributeExists("ingredient"))
+                .andExpect(model().attributeExists("uomList"));
+
+        verify(recipeService, times(1)).findCommandById(anyLong());
+    }
+
+    @Test
+    public void testDeleteIngredient() throws Exception {
+        /** http://localhost:8080/recipe/2/ingredient/15/delete
+
+         1. Get recipeCommand
+         2. filter ingredient that matches
+         3. delete ingredient?
+
+
+         **/
+
+        //when
+
+
+        //given
+
+
+        //then
+
+    }
 }

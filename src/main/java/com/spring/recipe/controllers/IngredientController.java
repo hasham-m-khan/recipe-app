@@ -1,6 +1,8 @@
 package com.spring.recipe.controllers;
 
 import com.spring.recipe.commands.IngredientCommand;
+import com.spring.recipe.commands.RecipeCommand;
+import com.spring.recipe.commands.UnitOfMeasureCommand;
 import com.spring.recipe.domain.Ingredient;
 import com.spring.recipe.services.IngredientService;
 import com.spring.recipe.services.RecipeService;
@@ -52,6 +54,21 @@ public class IngredientController {
         return "recipe/ingredient/ingredientform";
     }
 
+    @GetMapping("/recipe/{recipeId}/ingredient/new")
+    public String newIngredientForm(@PathVariable Long recipeId, Model model) {
+        RecipeCommand recipeCommand = recipeService.findCommandById(recipeId);
+        //Todo: Raise exception is recipeCommand is null
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(recipeId);
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+        model.addAttribute("ingredient", ingredientCommand);
+        model.addAttribute("uomList", uomService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
+    }
+
     @PostMapping("/recipe/{recipeId}/ingredient")
     public String saveOrUpdate(@PathVariable Long recipeId, @ModelAttribute IngredientCommand command) {
         log.debug("FROM IngredientController.SaveOrUpdate - RECIPE ID: " + recipeId);
@@ -62,4 +79,5 @@ public class IngredientController {
 
         return "redirect:/recipe/" + savedCommand.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
     }
+
 }

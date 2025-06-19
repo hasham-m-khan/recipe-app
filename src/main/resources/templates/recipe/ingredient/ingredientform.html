@@ -22,7 +22,6 @@
                   method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <input type="hidden" th:field="*{recipeId}"/>
-                <span th:text="'Recipe Id: ' + *{recipeId}"></span>
                 <div class="mb-3">
                     <label for="desc">Description</label>
                     <input type="text" th:field="*{description}" class="form-control" id="desc" />
