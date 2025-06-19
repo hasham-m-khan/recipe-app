@@ -8,6 +8,7 @@ import com.spring.recipe.services.UnitOfMeasureService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.http.MediaType;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -115,22 +116,11 @@ public class IngredientControllerTest {
 
     @Test
     public void testDeleteIngredient() throws Exception {
-        /** http://localhost:8080/recipe/2/ingredient/15/delete
-
-         1. Get recipeCommand
-         2. filter ingredient that matches
-         3. delete ingredient?
-
-
-         **/
-
-        //when
-
-
-        //given
-
-
         //then
+        mockMvc.perform(get("/recipe/1/ingredient/1/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/recipe/1/ingredients"));
 
+        verify(ingredientService, times(1)).deleteById(anyLong(), anyLong());
     }
 }
