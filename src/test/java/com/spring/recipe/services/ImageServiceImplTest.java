@@ -30,10 +30,6 @@ class ImageServiceImplTest {
 
     final Long RECIPE_ID = 1L;
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     void saveImage() throws IOException {
         //given

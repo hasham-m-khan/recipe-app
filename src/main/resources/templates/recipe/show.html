@@ -21,10 +21,19 @@
                 </p>
                 <div class="row">
                     <div class="mb-5 position-relative">
-                        <img th:src="@{/img/simple_guac.jpg}"
-                             alt=""
-                             style="border-radius: 50px; max-width: 100%;"
-                        >
+                        <div th:if="${recipe.getImage() != null}">
+                            <img style="border-radius: 50px; max-width: 100%;"
+                                src="/img/simple_guac.jpg"
+                                 th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
+                                 alt=""
+                            >
+                        </div>
+                        <div th:unless="${recipe.getImage() != null}">
+                            <img style="border-radius: 50px; max-width: 100%;"
+                                 src="/img/default_recipe.jpg"
+                                 alt=""
+                            >
+                        </div>
                         <a th:href="@{'/recipe/' + ${recipe.id} + '/image'}"
                            class="rounded position-absolute bottom-0 end-0 me-5 mb-4 change-recipe-img">Change</a>
                     </div>
