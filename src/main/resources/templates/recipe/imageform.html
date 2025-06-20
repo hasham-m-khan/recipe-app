@@ -18,8 +18,8 @@
         </div>
         <div class="card-body">
             <form th:action="@{'/recipe/' + ${ recipe.id } + '/image'}" method="post" enctype="multipart/form-data">
-                <label for="imageFile">Select Image</label>
-                <input type="file" class="form-control mb-4" id="imageFile" name="iamgefile">
+                <label for="imagefile">Select Image</label>
+                <input type="file" class="form-control mb-4" id="imagefile" name="imagefile">
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-primary">Submit</button>
                 </div>

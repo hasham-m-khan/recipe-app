@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @Slf4j
 @Controller
 public class ImageController {
@@ -32,7 +34,12 @@ public class ImageController {
 
     @PostMapping("recipe/{recipeId}/image")
     public String handleImagePost(@PathVariable Long recipeId, @RequestParam("imagefile") MultipartFile file) {
-        imageService.saveImage(recipeId, file);
+
+        try {
+            imageService.saveImage(recipeId, file);
+        } catch(IOException e) {
+            log.error(e.getMessage());
+        }
 
         return "redirect:/recipe/" + recipeId + "/show";
     }
