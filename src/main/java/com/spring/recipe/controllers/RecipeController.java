@@ -47,7 +47,7 @@ public class RecipeController {
         return "redirect:/";
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
 
