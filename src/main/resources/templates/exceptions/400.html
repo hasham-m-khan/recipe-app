@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- CSS tags-->
+    <th:block th:insert="~{fragments/fragments :: cssTags}"/>
+
+    <title>404 Not Found</title>
+</head>
+<body>
+<!-- Error 404 Template 1 - Bootstrap Brain Component -->
+<section class="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <p class="mb-5 d-inline-flex justify-content-center align-items-center bg-danger-subtle rounded-pill py-2 px-2 shadow-sm"
+           style="position: absolute; top: 10%; left: 50%; transform: translate(-50%, -50%) ;"
+        >
+      <span class="d-inline-flex justify-content-center align-items-center fs-5 rounded-circle bg-danger p-2 me-3"
+            style="width:40px; height:40px;">🚨</span>
+            <span class="fw-bold text-danger me-3" style="" th:text="${message}"></span>
+        </p>
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+
+                    <h2 class="d-flex justify-content-center align-items-center gap-2 mb-4">
+                        <span class="display-1 fw-bold">400</span>
+                    </h2>
+                    <h3 class="h2 mb-2">Bad Request</h3>
+                    <p class="mb-5">Make sure you are typing the correct URL.</p>
+                    <a class="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0" href="/" role="button">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<th:block th:insert="~{fragments/fragments :: scriptsFooter}" />
+</body>
+</html>
