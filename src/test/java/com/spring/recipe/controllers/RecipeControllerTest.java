@@ -1,5 +1,6 @@
 package com.spring.recipe.controllers;
 
+import com.spring.recipe.advices.GlobalExceptionHandler;
 import com.spring.recipe.commands.RecipeCommand;
 import com.spring.recipe.domain.Recipe;
 import com.spring.recipe.exceptions.NotFoundException;
@@ -37,6 +38,7 @@ class RecipeControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(controller)
+                .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
     }
 

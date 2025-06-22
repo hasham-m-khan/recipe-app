@@ -1,5 +1,6 @@
 package com.spring.recipe.controllers;
 
+import com.spring.recipe.advices.GlobalExceptionHandler;
 import com.spring.recipe.commands.RecipeCommand;
 import com.spring.recipe.services.ImageService;
 import com.spring.recipe.services.RecipeService;
@@ -39,7 +40,10 @@ class ImageControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(controller)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
     }
 
     @Test
@@ -100,5 +104,12 @@ class ImageControllerTest {
         byte[] responseBytes = response.getContentAsByteArray();
 
         assertEquals(s.getBytes().length, responseBytes.length);
+    }
+
+    @Test
+    void testGetImage_NumberFormatException() throws Exception {
+        mockMvc.perform(get("/recipe/someString/recipeimage"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("exceptions/400"));
     }
 }
