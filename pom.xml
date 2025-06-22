@@ -33,6 +33,7 @@
 		<webjars-bootstrap.version>5.3.6</webjars-bootstrap.version>
 		<webjars-jquery.version>3.7.1</webjars-jquery.version>
 		<webjars-popper-version>2.11.7</webjars-popper-version>
+		<webjars-bootstrap-icons-version>1.13.1</webjars-bootstrap-icons-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -87,6 +88,11 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>${webjars-jquery.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>bootstrap-icons</artifactId>
+			<version>${webjars-bootstrap-icons-version}</version>
 		</dependency>
     </dependencies>
 
